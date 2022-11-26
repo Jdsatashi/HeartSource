@@ -42,15 +42,20 @@ export default class MyPlayer extends Player {
   update(
     playerSelector: PlayerSelector,
     cursors: Phaser.Types.Input.Keyboard.CursorKeys,
+    keyF: Phaser.Input.Keyboard.Key,
     keyE: Phaser.Input.Keyboard.Key,
-    keyR: Phaser.Input.Keyboard.Key,
+    keyA: Phaser.Input.Keyboard.Key,
+    keyD: Phaser.Input.Keyboard.Key,
+    keyW: Phaser.Input.Keyboard.Key,
+    keyS: Phaser.Input.Keyboard.Key,
+    mouse: Phaser.Input.Pointer,
     network: Network
   ) {
     if (!cursors) return
 
     const item = playerSelector.selectedItem
 
-    if (Phaser.Input.Keyboard.JustDown(keyR)) {
+    if (Phaser.Input.Keyboard.JustDown(keyF)) {
       switch (item?.itemType) {
         case ItemType.COMPUTER:
           const computer = item as Computer
@@ -71,7 +76,7 @@ export default class MyPlayer extends Player {
            * not sitting at the center of the chair
            */
           this.scene.time.addEvent({
-            delay: 10,
+            delay: 500,
             callback: () => {
               // update character velocity and position
               this.setVelocity(0, 0)
@@ -108,16 +113,16 @@ export default class MyPlayer extends Player {
           return
         }
 
-        const speed = 200
+        const speed = 225
         let vx = 0
         let vy = 0
-        if (cursors.left?.isDown) vx -= speed
-        if (cursors.right?.isDown) vx += speed
-        if (cursors.up?.isDown) {
+        if (cursors.left?.isDown || keyA?.isDown || mouse?.isDown) vx -= speed
+        if (cursors.right?.isDown || keyD?.isDown || mouse?.isDown) vx += speed
+        if (cursors.up?.isDown || keyW?.isDown || mouse?.isDown) {
           vy -= speed
           this.setDepth(this.y) //change player.depth if player.y changes
         }
-        if (cursors.down?.isDown) {
+        if (cursors.down?.isDown || keyS?.isDown || mouse?.isDown) {
           vy += speed
           this.setDepth(this.y) //change player.depth if player.y changes
         }

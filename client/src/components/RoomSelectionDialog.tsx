@@ -29,8 +29,8 @@ const Backdrop = styled.div`
 `
 
 const Wrapper = styled.div`
-  background: #222639;
-  border-radius: 16px;
+  background: #FDFFCA;
+  border-radius: 12px;
   padding: 36px 60px;
   box-shadow: 0px 0px 5px #0000006f;
 `
@@ -56,7 +56,7 @@ const BackButtonWrapper = styled.div`
 
 const Title = styled.h1`
   font-size: 24px;
-  color: #eee;
+  color: #339DD8;
   text-align: center;
 `
 
@@ -120,16 +120,16 @@ export default function RoomSelectionDialog() {
           severity="error"
           variant="outlined"
           // overwrites the dark theme on render
-          style={{ background: '#fdeded', color: '#7d4747' }}
+          style={{ background: '#0b2d39', color: '#7d4747' }}
         >
-          Trying to connect to server, please try again!
+          Server is busied, try again!
         </Alert>
       </Snackbar>
       <Backdrop>
         <Wrapper>
           {showCreateRoomForm ? (
             <CustomRoomWrapper>
-              <Title>Create Custom Room</Title>
+              <Title>Create new Private Room</Title>
               <BackButtonWrapper>
                 <IconButton onClick={() => setShowCreateRoomForm(false)}>
                   <ArrowBackIcon />
@@ -140,7 +140,7 @@ export default function RoomSelectionDialog() {
           ) : showCustomRoom ? (
             <CustomRoomWrapper>
               <Title>
-                Custom Rooms
+                Private Rooms
                 <Tooltip
                   title="We update the results in realtime, no refresh needed!"
                   placement="top"
@@ -169,15 +169,15 @@ export default function RoomSelectionDialog() {
               <Title>Welcome to Heart</Title>
               <Content>
                 <img src={logo} alt="logo" />
-                <Button variant="contained" color="secondary" onClick={handleConnect}>
-                  Connect to public lobby
+                <Button variant="contained" onClick={handleConnect}>
+                  Log in to community Server
                 </Button>
                 <Button
                   variant="outlined"
-                  color="secondary"
+                  
                   onClick={() => (lobbyJoined ? setShowCustomRoom(true) : setShowSnackbar(true))}
                 >
-                  Create/find custom rooms
+                  Create/find server
                 </Button>
               </Content>
             </>
@@ -185,7 +185,7 @@ export default function RoomSelectionDialog() {
         </Wrapper>
         {!lobbyJoined && (
           <ProgressBarWrapper>
-            <h3> Connecting to server...</h3>
+            <h3> Trying connect to server...</h3>
             <ProgressBar color="secondary" />
           </ProgressBarWrapper>
         )}

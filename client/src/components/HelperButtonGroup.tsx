@@ -147,10 +147,10 @@ export default function HelperButtonGroup() {
                 <strong>Arrow keys</strong> to move
               </li>
               <li>
-                <strong>E</strong> to sit down (when facing a chair)
+                <strong>F</strong> to sit down (when facing a chair)
               </li>
               <li>
-                <strong>R</strong> to use computer to screen share (when facing a computer)
+                <strong>E</strong> to use computer to screen share (when facing a computer)
               </li>
               <li>
                 <strong>Enter</strong> to open chat

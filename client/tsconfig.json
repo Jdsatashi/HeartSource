@@ -19,7 +19,7 @@
     "importHelpers": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
   },
   "include": ["src"]
 }

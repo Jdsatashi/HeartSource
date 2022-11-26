@@ -30,8 +30,8 @@ const Wrapper = styled.form`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #222639;
-  border-radius: 16px;
+  background: #4CABE5;
+  border-radius: 8px;
   padding: 36px 60px;
   box-shadow: 0px 0px 5px #0000006f;
 `
