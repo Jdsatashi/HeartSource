@@ -75,7 +75,6 @@ export default class Network {
     this.room = await this.client.joinById(roomId, { password })
     this.initialize()
   }
-
   // method to create a custom room
   async createCustom(roomData: IRoomData) {
     const { name, description, password, autoDispose } = roomData
