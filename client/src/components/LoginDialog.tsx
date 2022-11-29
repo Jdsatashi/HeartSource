@@ -30,7 +30,7 @@ const Wrapper = styled.form`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #4CABE5;
+  background: #000000a7;
   border-radius: 8px;
   padding: 36px 60px;
   box-shadow: 0px 0px 5px #0000006f;
@@ -82,7 +82,7 @@ const Content = styled.div`
 `
 
 const Left = styled.div`
-  margin-right: 48px;
+  margin-left: 48px;
 
   --swiper-navigation-size: 24px;
 
@@ -108,9 +108,11 @@ const Left = styled.div`
     height: 136px;
     object-fit: contain;
   }
+  
 `
 
 const Right = styled.div`
+  margin-top: 8px;
   width: 300px;
 `
 
@@ -179,24 +181,6 @@ export default function LoginDialog() {
         <ArrowRightIcon /> {roomDescription}
       </RoomDescription>
       <Content>
-        <Left>
-          <SubTitle>Select an avatar</SubTitle>
-          <Swiper
-            // install Swiper modules
-            navigation
-            spaceBetween={0}
-            slidesPerView={1}
-            onSlideChange={(swiper) => {
-              setAvatarIndex(swiper.activeIndex)
-            }}
-          >
-            {avatars.map((avatar) => (
-              <SwiperSlide key={avatar.name}>
-                <img src={avatar.img} alt={avatar.name} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </Left>
         <Right>
           <TextField
             autoFocus
@@ -234,6 +218,24 @@ export default function LoginDialog() {
             </Warning>
           )}
         </Right>
+        <Left>
+          <SubTitle>Select an avatar</SubTitle>
+          <Swiper
+            // install Swiper modules
+            navigation
+            spaceBetween={0}
+            slidesPerView={1}
+            onSlideChange={(swiper) => {
+              setAvatarIndex(swiper.activeIndex)
+            }}
+          >
+            {avatars.map((avatar) => (
+              <SwiperSlide key={avatar.name}>
+                <img src={avatar.img} alt={avatar.name} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Left>
       </Content>
       <Bottom>
         <Button variant="contained" color="secondary" size="large" type="submit">

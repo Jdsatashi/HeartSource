@@ -120,7 +120,7 @@ export default class OtherPlayer extends Player {
       }
     }
 
-    const speed = 200 // speed is in unit of pixels per second
+    const speed = 225 // speed is in unit of pixels per second
     const delta = (speed / 1000) * dt // minimum distance that a player can move in a frame (dt is in unit of ms)
     let dx = this.targetPosition[0] - this.x
     let dy = this.targetPosition[1] - this.y
@@ -161,7 +161,7 @@ export default class OtherPlayer extends Player {
       this.body.touching.none &&
       this.connectionBufferTime >= 750
     ) {
-      if (this.x < 610 && this.y > 515 && this.myPlayer!.x < 610 && this.myPlayer!.y > 515) return
+      if (this.x < 750 && this.y > 625 && this.myPlayer!.x < 750 && this.myPlayer!.y > 625) return
       phaserEvents.emit(Event.PLAYER_DISCONNECTED, this.playerId)
       this.connectionBufferTime = 0
       this.connected = false

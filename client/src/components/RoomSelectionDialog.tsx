@@ -29,7 +29,7 @@ const Backdrop = styled.div`
 `
 
 const Wrapper = styled.div`
-  background: #FDFFCA;
+  background: #000000a7;
   border-radius: 12px;
   padding: 36px 60px;
   box-shadow: 0px 0px 5px #0000006f;
@@ -170,7 +170,7 @@ export default function RoomSelectionDialog() {
               <Content>
                 <img src={logo} alt="logo" />
                 <Button variant="contained" onClick={handleConnect}>
-                  Log in to community Server
+                  Join to community Server
                 </Button>
                 <Button
                   variant="outlined"

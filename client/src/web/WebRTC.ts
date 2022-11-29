@@ -131,7 +131,9 @@ export default class WebRTC {
 
   // method to set up mute/unmute and video on/off buttons
   setUpButtons() {
-    const audioButton = document.createElement('button')
+    const btn = 'button'
+    
+    const audioButton = document.createElement(btn)
     audioButton.innerText = 'Mute'
     audioButton.addEventListener('click', () => {
       if (this.myStream) {

@@ -74,6 +74,7 @@ export default class ShareScreenManager {
       })
   }
 
+  // TODO(daxchen): Fix this trash hack, if we call store.dispatch here when calling
   // from onClose, it causes redux reducer cycle, this may be fixable by using thunk
   // or something.
   stopScreenShare(shouldDispatch = true) {
