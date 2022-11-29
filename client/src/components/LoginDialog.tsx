@@ -30,7 +30,7 @@ const Wrapper = styled.form`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #4CABE5;
+  background: #2c4464;
   border-radius: 8px;
   padding: 36px 60px;
   box-shadow: 0px 0px 5px #0000006f;
@@ -138,7 +138,7 @@ const avatars = [
 // shuffle the avatars array
 for (let i = avatars.length - 1; i > 0; i--) {
   const j = Math.floor(Math.random() * (i + 1))
-  ;[avatars[i], avatars[j]] = [avatars[j], avatars[i]]
+    ;[avatars[i], avatars[j]] = [avatars[j], avatars[i]]
 }
 
 export default function LoginDialog() {

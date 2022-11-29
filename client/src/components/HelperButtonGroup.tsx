@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton'
 import Avatar from '@mui/material/Avatar'
 import Tooltip from '@mui/material/Tooltip'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import AccessibleForwardIcon from '@mui/icons-material/AccessibleForward';
 import ShareIcon from '@mui/icons-material/Share'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
@@ -103,6 +104,7 @@ const StyledFab = styled(Fab)`
 export default function HelperButtonGroup() {
   const [showControlGuide, setShowControlGuide] = useState(false)
   const [showRoomInfo, setShowRoomInfo] = useState(false)
+  const [showSponsor, setShowSponsor] = useState(false)
   const backgroundMode = useAppSelector((state) => state.user.backgroundMode)
   const roomJoined = useAppSelector((state) => state.room.roomJoined)
   const roomId = useAppSelector((state) => state.room.roomId)
@@ -165,6 +167,35 @@ export default function HelperButtonGroup() {
             </p>
           </Wrapper>
         )}
+        {showSponsor && (
+          <Wrapper>
+            <Title>Sponsor</Title>
+            <IconButton className="close" onClick={() => setShowSponsor(false)} size="small">
+              <CloseIcon />
+            </IconButton>
+            <ul>
+              <li>
+                <strong>Đkm CHÓ TRỊNH</strong>
+              </li>
+              <li>
+                <strong>Đkm CHÓ TRỊNH</strong>
+              </li>
+              <li>
+                <strong>Đkm CHÓ TRỊNH</strong>
+              </li>
+              <li>
+                <strong>Đkm CHÓ TRỊNH</strong>
+              </li>
+              <li>
+                <strong>Đkm CHÓ TRỊNH</strong>
+              </li>
+            </ul>
+            <p className="tip">
+              <LightbulbIcon />
+              Video connection will start if you are close to someone else
+            </p>
+          </Wrapper>
+        )}
       </div>
       <ButtonGroup>
         {roomJoined && (
@@ -175,6 +206,7 @@ export default function HelperButtonGroup() {
                 onClick={() => {
                   setShowRoomInfo(!showRoomInfo)
                   setShowControlGuide(false)
+                  setShowSponsor(false)
                 }}
               >
                 <ShareIcon />
@@ -186,9 +218,22 @@ export default function HelperButtonGroup() {
                 onClick={() => {
                   setShowControlGuide(!showControlGuide)
                   setShowRoomInfo(false)
+                  setShowSponsor(false)
                 }}
               >
                 <HelpOutlineIcon />
+              </StyledFab>
+            </Tooltip>
+            <Tooltip title="Sponsor">
+              <StyledFab
+                size="small"
+                onClick={() => {
+                  setShowSponsor(!showSponsor)
+                  setShowRoomInfo(false)
+                  setShowControlGuide(false)
+                }}
+              >
+                <AccessibleForwardIcon />
               </StyledFab>
             </Tooltip>
           </>

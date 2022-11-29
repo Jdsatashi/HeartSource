@@ -34,6 +34,7 @@ const Wrapper = styled.div`
   padding: 16px;
   display: flex;
   flex-direction: column;
+  z-index: 100
 `
 
 const FabWrapper = styled.div`

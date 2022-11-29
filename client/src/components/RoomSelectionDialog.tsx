@@ -29,7 +29,7 @@ const Backdrop = styled.div`
 `
 
 const Wrapper = styled.div`
-  background: #FDFFCA;
+  background: #101824;
   border-radius: 12px;
   padding: 36px 60px;
   box-shadow: 0px 0px 5px #0000006f;
@@ -174,7 +174,7 @@ export default function RoomSelectionDialog() {
                 </Button>
                 <Button
                   variant="outlined"
-                  
+
                   onClick={() => (lobbyJoined ? setShowCustomRoom(true) : setShowSnackbar(true))}
                 >
                   Create/find server
