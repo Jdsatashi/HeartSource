@@ -3,7 +3,7 @@ import { sanitizeId } from '../util'
 import { BackgroundMode } from '../../../types/BackgroundMode'
 
 import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
+import LoadSource from '../scenes/LoadSource'
 
 export function getInitialBackgroundMode() {
   const currentHour = new Date().getHours()
@@ -25,8 +25,8 @@ export const userSlice = createSlice({
         state.backgroundMode === BackgroundMode.DAY ? BackgroundMode.NIGHT : BackgroundMode.DAY
 
       state.backgroundMode = newMode
-      const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
-      bootstrap.changeBackgroundMode(newMode)
+      const loadSource = phaserGame.scene.keys.loadSource as LoadSource
+      loadSource.changeBackgroundMode(newMode)
     },
     setSessionId: (state, action: PayloadAction<string>) => {
       state.sessionId = action.payload

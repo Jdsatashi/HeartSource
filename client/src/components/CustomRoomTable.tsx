@@ -21,7 +21,7 @@ import { useAppSelector } from '../hooks'
 import { getAvatarString, getColorByString } from '../util'
 
 import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
+import LoadSource from '../scenes/LoadSource'
 
 const MessageText = styled.p`
   margin: 10px;
@@ -94,10 +94,10 @@ export const CustomRoomTable = () => {
 
   const handleJoinClick = (roomId: string, password: string | null) => {
     if (!lobbyJoined) return
-    const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
-    bootstrap.network
+    const loadSource = phaserGame.scene.keys.loadSource as LoadSource
+    loadSource.network
       .joinCustomById(roomId, password)
-      .then(() => bootstrap.launchGame())
+      .then(() => loadSource.launchGame())
       .catch((error) => {
         console.error(error)
         if (password) setShowPasswordError(true)

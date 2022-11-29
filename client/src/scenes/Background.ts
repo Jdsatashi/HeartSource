@@ -38,13 +38,13 @@ export default class Background extends Phaser.Scene {
     // Add 24 clouds at random positions and with random speeds
     const frames = this.textures.get(this.cloudKey).getFrameNames()
     this.cloud = this.physics.add.group()
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < 8; i++) {
       const x = Phaser.Math.RND.between(-sceneWidth * 0.5, sceneWidth * 1.5)
       const y = Phaser.Math.RND.between(sceneHeight * 0.2, sceneHeight * 0.8)
       const velocity = Phaser.Math.RND.between(15, 30)
 
       this.cloud
-        .get(x, y, this.cloudKey, frames[i % 6])
+        .get(x, y, this.cloudKey, frames[i % 1])
         .setScale(3)
         .setVelocity(velocity, 0)
     }

@@ -15,7 +15,7 @@ import { CreateRoomForm } from './CreateRoomForm'
 import { useAppSelector } from '../hooks'
 
 import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
+import LoadSource from '../scenes/LoadSource'
 
 const Backdrop = styled.div`
   position: absolute;
@@ -96,10 +96,10 @@ export default function RoomSelectionDialog() {
 
   const handleConnect = () => {
     if (lobbyJoined) {
-      const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
-      bootstrap.network
+      const loadSource = phaserGame.scene.keys.loadSource as LoadSource
+      loadSource.network
         .joinOrCreatePublic()
-        .then(() => bootstrap.launchGame())
+        .then(() => loadSource.launchGame())
         .catch((error) => console.error(error))
     } else {
       setShowSnackbar(true)

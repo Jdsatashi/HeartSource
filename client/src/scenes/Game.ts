@@ -83,7 +83,10 @@ export default class Game extends Phaser.Scene {
       throw new Error('server instance missing')
     } else {
       this.network = data.network
+      
     }
+
+    //this.game.sound.play('music1')
 
     createCharacterAnims(this.anims)
 
@@ -103,7 +106,6 @@ export default class Game extends Phaser.Scene {
 
     const Gardecor = this.map.createLayer('Gardecor', tilekey)
     Gardecor.setScale(2);
-
 
     this.myPlayer = this.add.myPlayer(545, 495, this.charMale, this.network.mySessionId)
     this.playerSelector = new PlayerSelector(this, 0, 0, 16, 16)
@@ -168,6 +170,29 @@ export default class Game extends Phaser.Scene {
     this.network.onItemUserAdded(this.handleItemUserAdded, this)
     this.network.onItemUserRemoved(this.handleItemUserRemoved, this)
     this.network.onChatMessageAdded(this.handleChatMessageAdded, this)
+
+
+    const snowDrop = this.add.particles('snow-drop')
+    snowDrop.createEmitter({
+      x: 0,
+      y: 0,
+      // emitZone
+      emitZone: {
+        source: new Phaser.Geom.Rectangle(-720 * 3, 0, 1280 * 8, 100),
+        type: 'random',
+        quantity: 70
+      },
+      speedY: { min: 50, max: 70 },
+      speedX: { min: -20, max: 20 },
+      accelerationY: { random: [10, 15] },
+      // lifespan
+      lifespan: { min: 8000, max: 11400 },
+      scale: { random: [0.25, 0.75] },
+      alpha: { random: [0.1, 0.8] },
+      gravityY: 10,
+      frequency: 10,
+      blendMode: 'ADD',
+    })
   }
 
   private handleItemSelectorOverlap(playerSelector, selectionItem) {
@@ -278,6 +303,7 @@ export default class Game extends Phaser.Scene {
   }
 
   update(t: number, dt: number) {
+
     if (this.myPlayer && this.network) {
       this.playerSelector.update(this.myPlayer, this.cursors)
       this.myPlayer.update(this.playerSelector, this.cursors, this.keyE,

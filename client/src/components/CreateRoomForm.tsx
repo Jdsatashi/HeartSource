@@ -11,7 +11,7 @@ import { IRoomData } from '../../../types/Rooms'
 import { useAppSelector } from '../hooks'
 
 import phaserGame from '../PhaserGame'
-import Bootstrap from '../scenes/Bootstrap'
+import LoadSource from '../scenes/LoadSource'
 
 const CreateRoomFormWrapper = styled.form`
   display: flex;
@@ -47,10 +47,10 @@ export const CreateRoomForm = () => {
 
     // create custom room if name and description are not empty
     if (isValidName && isValidDescription && lobbyJoined) {
-      const bootstrap = phaserGame.scene.keys.bootstrap as Bootstrap
-      bootstrap.network
+      const loadSource = phaserGame.scene.keys.loadSource as LoadSource
+      loadSource.network
         .createCustom(values)
-        .then(() => bootstrap.launchGame())
+        .then(() => loadSource.launchGame())
         .catch((error) => console.error(error))
     }
   }
