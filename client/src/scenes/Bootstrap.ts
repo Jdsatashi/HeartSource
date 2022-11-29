@@ -39,18 +39,6 @@ export default class Bootstrap extends Phaser.Scene {
       frameWidth: 18,
       frameHeight: 17,
     })
-    this.load.spritesheet('office', 'assets/map/heart-project.png', {
-      frameWidth: 16,
-      frameHeight: 16,
-    })
-    this.load.spritesheet('basement', 'assets/map/heart-project.png', {
-      frameWidth: 16,
-      frameHeight: 16,
-    })
-    this.load.spritesheet('generic', 'assets/map/heart-project.png', {
-      frameWidth: 16,
-      frameHeight: 16,
-    })
     this.load.spritesheet('male', 'assets/character/adam.png', {
       frameWidth: 32,
       frameHeight: 48,

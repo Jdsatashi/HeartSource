@@ -11,6 +11,7 @@ import { phaserEvents, Event } from '../events/EventCenter'
 import store from '../stores'
 import { pushPlayerJoinedMessage } from '../stores/ChatStore'
 import { ItemType } from '../../../types/Items'
+import { NavKeys } from '../../../types/Keyboard'
 
 export default class MyPlayer extends Player {
   private playContainerBody: Phaser.Physics.Arcade.Body
@@ -41,7 +42,7 @@ export default class MyPlayer extends Player {
 
   update(
     playerSelector: PlayerSelector,
-    cursors: Phaser.Types.Input.Keyboard.CursorKeys,
+    cursors: NavKeys,
     keyF: Phaser.Input.Keyboard.Key,
     keyE: Phaser.Input.Keyboard.Key,
     keyA: Phaser.Input.Keyboard.Key,
@@ -116,15 +117,15 @@ export default class MyPlayer extends Player {
         const speed = 225
         let vx = 0
         let vy = 0
-        if (cursors.left?.isDown || keyA?.isDown || mouse?.isDown) vx -= speed
-        if (cursors.right?.isDown || keyD?.isDown || mouse?.isDown) vx += speed
-        if (cursors.up?.isDown || keyW?.isDown || mouse?.isDown) {
+        if (cursors.left?.isDown || cursors.A?.isDown || mouse?.isDown) vx -= speed
+        if (cursors.right?.isDown || cursors.D?.isDown || mouse?.isDown) vx += speed
+        if (cursors.up?.isDown || cursors.W?.isDown || mouse?.isDown) {
           vy -= speed
           this.setDepth(this.y) //change player.depth if player.y changes
         }
-        if (cursors.down?.isDown || keyS?.isDown || mouse?.isDown) {
+        if (cursors.down?.isDown || cursors.S?.isDown || mouse?.isDown) {
           vy += speed
-          this.setDepth(this.y) //change player.depth if player.y changes
+          // this.setDepth(this.y) //change player.depth if player.y changes
         }
         // update character velocity
         this.setVelocity(vx, vy)

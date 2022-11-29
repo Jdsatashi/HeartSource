@@ -16,13 +16,15 @@ import Network from '../services/Network'
 import { IPlayer } from '../../../types/IOfficeState'
 import { PlayerBehavior } from '../../../types/PlayerBehavior'
 import { ItemType } from '../../../types/Items'
+import { NavKeys, Keyboard } from '../../../types/Keyboard'
 
 import store from '../stores'
 import { setFocused, setShowChat } from '../stores/ChatStore'
 
 export default class Game extends Phaser.Scene {
   network!: Network
-  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys
+  private cursors!: NavKeys
+
   private keyE!: Phaser.Input.Keyboard.Key
   private keyF!: Phaser.Input.Keyboard.Key
   private keyW!: Phaser.Input.Keyboard.Key
@@ -31,6 +33,8 @@ export default class Game extends Phaser.Scene {
   private keyS!: Phaser.Input.Keyboard.Key
   private map!: Phaser.Tilemaps.Tilemap
   private mouse!: Phaser.Input.Pointer
+
+  
   myPlayer!: MyPlayer
   private playerSelector!: Phaser.GameObjects.Zone
   private otherPlayers!: Phaser.Physics.Arcade.Group
@@ -45,7 +49,10 @@ export default class Game extends Phaser.Scene {
   }
 
   registerKeys() {
-    this.cursors = this.input.keyboard.createCursorKeys()
+    this.cursors = {
+      ...this.input.keyboard.createCursorKeys(),
+      ...(this.input.keyboard.addKeys('W,S,A,D') as Keyboard),
+    }
     // maybe we can have a dedicated method for adding keys if more keys are needed in the future
     this.keyW = this.input.keyboard.addKey('W')
     this.keyA = this.input.keyboard.addKey('A')
@@ -53,7 +60,6 @@ export default class Game extends Phaser.Scene {
     this.keyS = this.input.keyboard.addKey('S')
     this.keyE = this.input.keyboard.addKey('E')
     this.keyF = this.input.keyboard.addKey('F')
-    this.mouse = this.input.mousePointer
     this.input.keyboard.disableGlobalCapture()
     this.input.keyboard.on('keydown-ENTER', (event) => {
       store.dispatch(setShowChat(true))
