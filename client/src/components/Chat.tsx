@@ -148,7 +148,7 @@ const Message = ({ chatMessage, messageType }) => {
               color: getColorByString(chatMessage.author),
             }}
           >
-            {chatMessage.author}: <span>{chatMessage.content}</span>
+            <span>[{chatMessage.createdAt}]</span>{chatMessage.author}: <span>{chatMessage.content}</span>
           </p>
         ) : (
           <p className="notification">

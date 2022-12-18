@@ -33,7 +33,7 @@ export default class Network {
     const endpoint =
       process.env.NODE_ENV === 'production'
         ? ``
-        : `${protocol}//${window.location.hostname}:2567`
+      : `wss://server.heartvietnam.org`
     this.client = new Client(endpoint)
     this.joinLobbyRoom().then(() => {
       store.dispatch(setLobbyJoined(true))
